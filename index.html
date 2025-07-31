@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Phone Case Catalog</title>
+  <title>Phone Case Catalogue</title>
   <link rel="stylesheet" href="style.css">
   <style>
     
@@ -20,15 +20,21 @@
 <h1>Phone Case Catalog</h1>
 
 <div class="search-container">
-  <input type="text" id="searchBox" list="phoneModels" placeholder="Search phone model...">
+  <div class="search-bar-wrapper">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchBox" list="phoneModels" placeholder="Search for your phone models...">
+    </div>
+    <button id="searchBtn">Search</button>
+  </div>
   <datalist id="phoneModels"></datalist>
-  <button id="searchBtn">Search</button>
 </div>
+
 
 <div id="loadingBar">Loading...</div>
 <div id="catalog"></div>
 
-<button id="backToTop" style="display:none;position:fixed;bottom:20px;right:20px;">Back to Top</button>
+<button id="backToTop" title="Back to top">↑</button>
 
 </body>
 </html>

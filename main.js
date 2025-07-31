@@ -68,7 +68,13 @@ function generateCardHTML(row) {
     <div class="identifierDiv">
       <div class="title-row">
         <div class="title-text">${row["PRODUCT_TITLE"] || "Unnamed Item"}</div>
-        <div class="sku-text">${row["PRODUCT_SKU"] || ""}</div>
+        <div class="sku-text" onclick="copyToClipboard('${row["PRODUCT_SKU"] || ""}')">
+          <span>${row["PRODUCT_SKU"] || ""}</span>
+          <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M10 1.5A1.5 1.5 0 0 1 11.5 3v1h-1V3a.5.5 0 0 0-.5-.5H5A1.5 1.5 0 0 0 3.5 4v7.5a.5.5 0 0 0 .5.5h1v1h-1a1.5 1.5 0 0 1-1.5-1.5V4A2.5 2.5 0 0 1 5 1.5h5z"/>
+            <path d="M5 5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5zm1-1a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H6z"/>
+          </svg>
+        </div>
       </div>
     </div>
 
@@ -147,3 +153,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+function copyToClipboard(text) {
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    console.log(`Copied: ${text}`);
+  }).catch(err => {
+    console.error('Copy failed:', err);
+  });
+}

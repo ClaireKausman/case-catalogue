@@ -20,13 +20,57 @@ body {
 }
 
 .search-container {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 24px;
 }
 
-#searchBox {
-    width: 300px;
-    padding: 8px;
+.search-bar-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    align-items: center;
+}
+
+.search-box {
+    display: flex;
+    flex: 1;
+    border: 2px solid #000;
+    border-radius: 999px;
+    overflow: hidden;
+    align-items: center;
+    background: #fff;
+    padding: 0 12px;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    padding: 12px;
     font-size: 16px;
+    outline: none;
+}
+
+.search-icon {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #666;
+}
+
+#searchBtn {
+    margin-left: 10px;
+    padding: 12px 24px;
+    background-color: #0064e0;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#searchBtn:hover {
+    background-color: #004db3;
 }
 
 .productCard {
@@ -60,15 +104,57 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 8px;
-  }
-  
-  .title-text {
+}
+
+.title-text {
     font-weight: bold;
     font-size: 1.1em;
-  }
-  
-  .sku-text {
+}
+
+.sku-text {
     font-size: 0.85em;
     color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .sku-text:hover {
+    color: #000;
+    font-weight: 500;
+  }
+  
+  .copy-icon {
+    font-size: 0.9em;
+    opacity: 0.7;
+  }
+  
+  .sku-text:hover .copy-icon {
+    opacity: 1;
+  }
+  
+
+  #backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0064e0;        
+    color: #fff;                   
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    z-index: 999;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  
+  #backToTop:hover {
+    transform: scale(1.15);
+    background-color: #333;
   }
   
