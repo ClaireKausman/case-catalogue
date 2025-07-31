@@ -66,9 +66,12 @@ function generateCardHTML(row) {
 
   return `
     <div class="identifierDiv">
-      <div class="title">${row["PRODUCT_TITLE"] || "Unnamed Item"}</div>
-      <div class="sku">${row["PRODUCT_SKU"] || ""}</div>
+      <div class="title-row">
+        <div class="title-text">${row["PRODUCT_TITLE"] || "Unnamed Item"}</div>
+        <div class="sku-text">${row["PRODUCT_SKU"] || ""}</div>
+      </div>
     </div>
+
     ${imageGalleryHtml}
     <div class="infoDiv">
       <div><strong>Color:</strong> ${row["COLOR"] || "-"}</div>

@@ -1,0 +1,74 @@
+#disclaimerBanner {
+    background-color: #fbeec2;
+    border: 1px solid #f1d28d;
+    padding: 12px;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #5c3d00;
+    font-weight: bold;
+}
+
+#disclaimerBanner a {
+    color: #5c3d00;
+    text-decoration: underline;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+#searchBox {
+    width: 300px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.productCard {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 16px;
+}
+
+.productCard img {
+    max-width: 120px;
+    max-height: 120px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.imagesDiv {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 8px 0;
+}
+
+#loadingBar {
+    display: none;
+    font-weight: bold;
+}
+
+.title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+  
+  .title-text {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+  
+  .sku-text {
+    font-size: 0.85em;
+    color: #666;
+  }
+  

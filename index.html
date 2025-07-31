@@ -4,35 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Phone Case Catalog</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    .search-container { margin-bottom: 20px; }
-    #searchBox { width: 300px; padding: 8px; font-size: 16px; }
-    .productCard {
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 16px;
-    }
-    .productCard img {
-      max-width: 120px;
-      max-height: 120px;
-      object-fit: cover;
-      margin-right: 10px;
-    }
-    .imagesDiv {
-      display: flex;
-      overflow-x: auto;
-      gap: 8px;
-      padding: 8px 0;
-    }
-    #loadingBar { display: none; font-weight: bold; }
+    
   </style>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <script defer src="main.js"></script>
 </head>
 <body>
 
+<div id="disclaimerBanner">
+  This is an interactive product catalogue. All purchases must be completed externally via our official <a href="https://www.ebay.com.au/str/nexgenau" target="_blank" rel="noopener noreferrer">eBay store</a>.
+</div>
+  
 <h1>Phone Case Catalog</h1>
 
 <div class="search-container">
