@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phone Case Catalog</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .search-container { margin-bottom: 20px; }
+        .search-box { width: 300px; padding: 8px; font-size: 16px; }
+        .product-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+        }
+        .product-image { max-width: 150px; }
+        .product-title { font-weight: bold; margin: 8px 0; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<h1>Phone Case Catalog</h1>
+
+<div class="search-container">
+    <input type="text" id="searchInput" class="search-box" list="phoneModels" placeholder="Search phone model...">
+    <datalist id="phoneModels"></datalist>
+</div>
+
+<div id="productContainer"></div>
+
+<script>
+// Load phone models for datalist
+fetch('phone_model_dict.txt')
+    .then(response => response.text())
+    .then(text => {
+        const datalist = document.getElementById("phoneModels");
+        text.split('\n').forEach(model => {
+            if (model.trim()) {
+                const option = document.createElement("option");
+                option.value = model;
+                datalist.appendChild(option);
+            }
+        });
+    });
+
+// Load and parse CSV
+function parseCSV(text) {
+    const lines = text.trim().split('\n');
+    const headers = lines[0].split(',');
+    return lines.slice(1).map(line => {
+        const values = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+        const entry = {};
+        headers.forEach((h, i) => entry[h.trim()] = (values[i] || '').replace(/^"|"$/g, ''));
+        return entry;
+    });
+}
+
+function createCard(entry) {
+    return `
+    <div class="product-card" data-phone="${entry.PHONE.toLowerCase()}">
+        <img src="${entry.IMAGES}" class="product-image" alt="Image not available">
+        <div class="product-title">${entry.PRODUCT_TITLE}</div>
+        <div><strong>Phone:</strong> ${entry.PHONE}</div>
+        <div><strong>Color:</strong> ${entry.COLOR}</div>
+        <div><strong>Case Type:</strong> ${entry.CASE}</div>
+        <div><strong>Price:</strong> ${entry.rrp}</div>
+        <div><strong>Description:</strong><br>${entry.PRODUCT_DESCRIPTION}</div>
+    </div>`;
+}
+
+fetch('CLASSIFY.csv')
+    .then(response => response.text())
+    .then(csv => {
+        const data = parseCSV(csv);
+        const container = document.getElementById("productContainer");
+        container.innerHTML = data.map(createCard).join('');
+
+        document.getElementById("searchInput").addEventListener("input", e => {
+            const keyword = e.target.value.toLowerCase();
+            document.querySelectorAll(".product-card").forEach(card => {
+                card.classList.toggle("hidden", !card.dataset.phone.includes(keyword));
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
